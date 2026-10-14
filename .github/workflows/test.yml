@@ -26,4 +26,4 @@ jobs:
 
       - name: Run core tests
         run: |
-          python -m pytest -v tests/test_model_shapes.py
+          python -m pytest -v  models/tests/test_model_shapes.py
