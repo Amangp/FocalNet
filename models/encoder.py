@@ -55,4 +55,3 @@ class Encoder(nn.Module):
         f3 = self.scale3(self.down2(f2))
 
         return f1, f2, f3
-```
