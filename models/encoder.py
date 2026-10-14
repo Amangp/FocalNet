@@ -1,4 +1,3 @@
-
 """Three-scale encoder for FocalNet."""
 
 from typing import Sequence, Tuple
