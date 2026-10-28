@@ -1,0 +1,64 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dataset contents (keep the data-loader source folders tracked)
+/dataset/
+/datasets/
+/data_raw/
+/data_cache/
+/CSD/
+/SRRS/
+/Snow100K/
+/RESIDE/
+/GoPro/
+
+# Training outputs, validation outputs, and TensorBoard logs
+results/
+runs/
+logs/
+tensorboard/
+outputs/
+predictions/
+checkpoints/
+**/results/
+**/runs/
+**/logs/
+**/tensorboard/
+**/outputs/
+**/predictions/
+**/checkpoints/
+events.out.tfevents.*
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# NOTE: pretrained checkpoint files in the project root (for example,
+# model_100k.pkl and model_its.pkl) are intentionally NOT ignored because
+# the inference app may depend on them. Keep large files in Git only if wanted.
