@@ -18,6 +18,3 @@ PyYAML>=6.0
 # Root-level Gradio inference app
 gradio>=4.44.0
 
-# Official dehazing/desnowing training code uses this bundled scheduler.
-# Run pip install from the FocalNet repository root.
--e ./pytorch-gradual-warmup-lr
