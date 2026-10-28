@@ -1,6 +1,65 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Dataset contents — keep local datasets out of Git
 dataset/
+datasets/
+data_raw/
+data_cache/
+CSD/
+SRRS/
+Snow100K/
+RESIDE/
+GoPro/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Training outputs and logs
+results/
+runs/
+logs/
+tensorboard/
+outputs/
+predictions/
+checkpoints/
+**/results/
+**/runs/
+**/logs/
+**/tensorboard/
+**/outputs/
+**/predictions/
+**/checkpoints/
+events.out.tfevents.*
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Model and dataset artifacts
 *.pkl
 *.pth
 *.pt
-__pycache__/
-*.pyc
