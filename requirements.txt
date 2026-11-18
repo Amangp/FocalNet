@@ -17,4 +17,3 @@ PyYAML>=6.0
 
 # Root-level Gradio inference app
 gradio>=4.44.0
-
