@@ -29,9 +29,7 @@ class PairedHazeDataset(Dataset):
     """
     Match RESIDE-OTS hazy images to clear images by image ID.
 
-    Example:
-        Hazy: 0001_0.85_0.04.jpg
-        Clear: 0001.jpg
+    Optional seed enables deterministic crops and flips.
     """
 
     def __init__(
@@ -39,7 +37,8 @@ class PairedHazeDataset(Dataset):
         hazy_dir,
         clear_dir,
         patch_size=256,
-        training=True
+        training=True,
+        seed=None
     ):
         hazy = _collect_images(hazy_dir)
         clear = _collect_images(clear_dir)
@@ -65,8 +64,13 @@ class PairedHazeDataset(Dataset):
 
         self.patch_size = patch_size
         self.training = training
+        self.seed = seed
+        self.epoch = 0
 
         print(f"Loaded {len(self.pairs)} paired images.")
+
+    def set_epoch(self, epoch):
+        self.epoch = int(epoch)
 
     @staticmethod
     def _read(path):
@@ -104,14 +108,23 @@ class PairedHazeDataset(Dataset):
                     f"{hazy_path.name}"
                 )
 
-            top = random.randint(0, height - patch)
-            left = random.randint(0, width - patch)
+            if self.seed is None:
+                rng = random
+            else:
+                sample_seed = (
+                    int(self.seed)
+                    + self.epoch * 1_000_003
+                    + int(index)
+                )
+                rng = random.Random(sample_seed)
+
+            top = rng.randint(0, height - patch)
+            left = rng.randint(0, width - patch)
 
             hazy = hazy[:, top:top + patch, left:left + patch]
             clear = clear[:, top:top + patch, left:left + patch]
 
-            # Paper-specified random horizontal flip (p = 0.5)
-            if random.random() < 0.5:
+            if rng.random() < 0.5:
                 hazy = hazy.flip(-1)
                 clear = clear.flip(-1)
 
